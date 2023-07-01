@@ -8,7 +8,7 @@ function App() {
     <>
     <Navbar title="Learn" content="React Basics"/>
     <div className='container'>
-      <TextArea heading="Type any Value"/>
+      <TextArea heading="Enter the text:"/>
     </div>
     </>
   );
