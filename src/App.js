@@ -5,6 +5,13 @@ import TextArea from './Components/TextArea';
 import About from './Components/About';
 import { useState } from 'react';
 import Alert from './Components/Alert';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Routes,
+  Link
+} from "react-router-dom";
 
 function App() {
   const [mode, setMode] = useState('light');
@@ -34,14 +41,20 @@ function App() {
   }
   return (
     <>
-    <Navbar title="Learn" content="React Basics" mode={mode} toggleMode={toggleMode}/>
+    <Router>
+    <Navbar title="Home" content="React Basics" mode={mode} toggleMode={toggleMode}/>
     <Alert alert={alert}/>
     <div className='container'>
-      <TextArea heading="Enter the text:" showAlert={showAlert} mode={mode}/>
+      <Routes>
+        <Route path="/" element={<TextArea heading="Enter the text:" showAlert={showAlert} mode={mode}/>} />
+        <Route path="/about" element={<About/>} />
+        </Routes>
+    
     </div>
     {/* <div className="container">
       <About/>
     </div> */}
+    </Router>
     </>
   );
 }

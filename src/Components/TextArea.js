@@ -5,6 +5,24 @@ export default function TextArea(props) {
   const handleOnChange = (event) =>{
     setText(event.target.value)
   }
+
+  const wordLength= (text)=>{
+    if(text.length!==0){
+      let arr = text.split(' ')
+      let len=0;
+      for(let i=0; i< arr.length; i++){
+        if(arr[i]!=""){
+          len+=1;
+        }
+      }
+      return len;
+    }
+    else{
+      return 0;
+    }
+    
+  }
+
   const handleUpClick = () => {
     let upper = text.toUpperCase()
     setText(upper)
@@ -34,7 +52,7 @@ export default function TextArea(props) {
       <button className="btn btn-primary mx-1" onClick={handleClear}>Clear</button>
       <div className="container" style={{color: props.mode==='dark'?'white':'#042743'}}>
         <h2>Text Summary</h2>
-        <p>No. of Letters: {text.length} and No. of words: {text.split(' ').length}.</p>
+        <p>No. of Letters: {text.length} and No. of words: {wordLength(text)}.</p>
         <h2>Preview</h2>
         <p>{text.length===0?"Enter Something on the TextField to preview.":text}</p>
       </div>
